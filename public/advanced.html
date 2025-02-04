@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>advanced python</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Advanced Python</h1>
+</header>
+
+<nav>
+    <a href="../index.html">Introduction</a>
+    <a href="installation.html">Installation</a>
+    <a href="basic.html">Basic Python</a>
+    <a href="advanced.html">Advanced Python</a>
+    <a href="../about.html">About Me</a>
+    <a href="contact.html">Contact Me</a>
+</nav>
+
+
+
+<body onload="brython()">
+    <div class="container">
+        <h1>Advanced Python Concepts</h1>
+
+        <h2>1. Object-Oriented Programming (OOP)</h2>
+        <p>Python supports object-oriented programming (OOP), which allows for code reusability and modularity.</p>
+        
+        <h3>Classes and Objects</h3>
+        <pre><code>
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def display(self):
+        print(f"Car: {self.brand} {self.model}")
+
+# Creating an object
+my_car = Car("Toyota", "Corolla")
+my_car.display()
+        </code></pre>
+
+        <h3>Inheritance</h3>
+        <p>Inheritance allows one class to derive properties from another.</p>
+        <pre><code>
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def honk(self):
+        print("Honk! Honk!")
+
+class Car(Vehicle):
+    def __init__(self, brand, model):
+        super().__init__(brand)
+        self.model = model
+
+    def display(self):
+        print(f"Car: {self.brand} {self.model}")
+
+my_car = Car("Tesla", "Model S")
+my_car.display()
+my_car.honk()
+        </code></pre>
+
+        <h2>2. Decorators</h2>
+        <p>Decorators allow you to modify the behavior of functions or classes dynamically.</p>
+        <pre><code>
+def decorator_function(original_function):
+    def wrapper_function():
+        print("Wrapper executed before", original_function.__name__)
+        return original_function()
+    return wrapper_function
+
+@decorator_function
+def say_hello():
+    print("Hello, World!")
+
+say_hello()
+        </code></pre>
+
+        <h2>3. Generators</h2>
+        <p>Generators are functions that allow you to iterate over data lazily using the <code>yield</code> keyword.</p>
+        <pre><code>
+def count_up_to(n):
+    count = 1
+    while count <= n:
+        yield count
+        count += 1
+
+for num in count_up_to(5):
+    print(num)
+        </code></pre>
+
+        <h2>4. Multithreading</h2>
+        <p>Python’s <code>threading</code> module allows for concurrent execution of code.</p>
+        <pre><code>
+import threading
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+thread = threading.Thread(target=print_numbers)
+thread.start()
+thread.join()
+print("Thread finished execution")
+        </code></pre>
+
+        <h2>5. File Handling</h2>
+        <p>Python allows reading and writing files easily.</p>
+
+        <h3>Writing to a File</h3>
+        <pre><code>
+with open("example.txt", "w") as file:
+    file.write("Hello, this is a test file!")
+        </code></pre>
+
+        <h3>Reading from a File</h3>
+        <pre><code>
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+        </code></pre>
+
+        <h2>6. Lambda Functions</h2>
+        <p>Lambda functions are small, anonymous functions useful for short operations.</p>
+        <pre><code>
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+        </code></pre>
+
+        <h2>7. Working with JSON</h2>
+        <p>Python's <code>json</code> module is used to work with JSON data.</p>
+        
+        <h3>Converting Python Dictionary to JSON</h3>
+        <pre><code>
+import json
+
+data = {"name": "Alice", "age": 25}
+json_data = json.dumps(data)
+print(json_data)
+        </code></pre>
+
+        <h3>Reading JSON Data</h3>
+        <pre><code>
+import json
+
+json_string = '{"name": "Alice", "age": 25}'
+data = json.loads(json_string)
+print(data["name"])  # Output: Alice
+        </code></pre>
+
+        <h2>8. Regular Expressions</h2>
+        <p>Python's <code>re</code> module is used for pattern matching.</p>
+        <pre><code>
+import re
+
+pattern = r"\d{3}-\d{2}-\d{4}"
+text = "My number is 123-45-6789"
+match = re.search(pattern, text)
+if match:
+    print("Match found:", match.group())
+        </code></pre>
+
+        <h2>9. Exception Handling</h2>
+        <p>Python allows handling errors gracefully using <code>try-except</code>.</p>
+        <pre><code>
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+finally:
+    print("This will always execute.")
+        </code></pre>
+
+        <h2>10. Working with Databases (SQLite Example)</h2>
+        <p>Python has built-in support for SQLite databases.</p>
+
+        <h3>Creating a Database and Table</h3>
+        <pre><code>
+import sqlite3
+
+conn = sqlite3.connect("example.db")
+cursor = conn.cursor()
+
+cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)")
+cursor.execute("INSERT INTO users (name) VALUES ('Alice')")
+
+conn.commit()
+conn.close()
+        </code></pre>
+
+        <h3>Reading Data from the Database</h3>
+        <pre><code>
+import sqlite3
+
+conn = sqlite3.connect("example.db")
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM users")
+print(cursor.fetchall())
+
+conn.close()
+        </code></pre>
+
+        <h2>Conclusion</h2>
+        <p>Now that you've explored advanced Python concepts, you're ready to take on real-world projects and optimize your code for performance!</p>
+        
+        <p>Want to review the basics? Check out our <a href="basic.html">Basic Python Tutorial</a>.</p>
+    </div>
+</body>
+
+
+<div class="container">
+    <body onload="brython()">
+        <h2>Python Interpreter 1</h2>
+        <p>Test Your Knowledge Here</p>
+        <textarea id="code1" rows="5" cols="50">print("Hello from Interpreter 1!")</textarea>
+        <br>
+        <button id="run1">Run</button>
+        <pre id="output1"></pre>
+    
+        <h2>Python Interpreter 2</h2>
+        <p> Test Your Coding Skills Here </p>
+        <textarea id="code2" rows="5" cols="50">print("Hello from Interpreter 2!")</textarea>
+        <br>
+        <button id="run2">Run</button>
+        <pre id="output2"></pre>
+    
+        <script type="text/python">
+    from browser import document
+    
+    def run_code_1(event):
+        code = document["code1"].value
+        output = document["output1"]
+    
+        try:
+            result = []
+            def custom_print(*args):
+                result.append(" ".join(str(arg) for arg in args))
+    
+            exec(code, {"print": custom_print})
+            output.text = "\n".join(result) if result else "Code executed successfully!"
+    
+        except Exception as e:
+            output.text = f"Error: {str(e)}"
+    
+    def run_code_2(event):
+        code = document["code2"].value
+        output = document["output2"]
+    
+        try:
+            result = []
+            def custom_print(*args):
+                result.append(" ".join(str(arg) for arg in args))
+    
+            exec(code, {"print": custom_print})
+            output.text = "\n".join(result) if result else "Code executed successfully!"
+    
+        except Exception as e:
+            output.text = f"Error: {str(e)}"
+    
+    document["run1"].bind("click", run_code_1)
+    document["run2"].bind("click", run_code_2)
+        </script>
+    </body>
+    </div>
+
+
+<div class="container">
+    <p>
+
+    </p>
+</div>
+
+</body>
+
+<footer class="footer">
+    <p>&copy; 2025 Rahul Kumar. All Rights Reserved.</p>
+</footer>
+</html>

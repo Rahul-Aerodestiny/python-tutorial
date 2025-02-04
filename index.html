@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutorial by Rahul</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Python Tutorial by Rahul</h1>
+</header>
+
+<nav>
+    <a href="index.html">Introduction</a>
+    <a href="./public/installation.html">Installation</a>
+    <a href="./public/basic.html">Basic Python</a>
+    <a href="./public/advanced.html">Advanced Python</a>
+    <a href="about.html">About Me</a>
+    <a href="./public/contact.html">Contact Me</a>
+
+</nav>
+
+<div class="container">
+    <div class="main-content">
+        <div>
+            <h2>Welcome to My Python Class</h2>
+                <p style="color: #003f7f">
+                    <span class="highlight">Instructor Details:</span> 
+                    <br/> Rahul Kumar 
+                    <br/> Senior Analyst, Application Development 
+                    <br /> Global IT Design & Modelling CAD and FEA | Goodyear
+                    <br/> Previous Roles: 
+                    <br /> Aerospace FEA Engineer | Eaton
+                    <br /> Product Engineer | Siemens, 
+                    <br /> Education: M.Tech | IIT Bombay
+                </p>
+        </div>
+        <a href="profile.jpg" target="_blank">
+            <img src="./assets/images/profile_pic.jpg" alt="Rahul's Profile">
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Why Learn Python?</h2>
+    <ul class="reason-list">
+        <li><span class="highlight">Easy to Learn & Use:</span> Python’s simple syntax makes it beginner-friendly.</li>
+        <li><span class="highlight">Versatile & Powerful:</span> Used in web development, AI, data science, automation, and more.</li>
+        <li><span class="highlight">High Demand in Jobs:</span> Python is widely used in the tech industry with great career opportunities.</li>
+        <li><span class="highlight">Huge Community Support:</span> A vast collection of open-source libraries and active developer community.</li>
+        <li><span class="highlight">Boosts Productivity:</span> Automate repetitive tasks efficiently.</li>
+    </ul>
+
+    <h2>Real-World Use Cases</h2>
+    <ul class="use-cases">
+        <li><span class="highlight2">Netflix:</span> Uses Python for personalized recommendations and content streaming optimization.</li>
+        <li><span class="highlight2">Google:</span> Uses Python in search algorithms, AI, and backend development.</li>
+        <li><span class="highlight2">Tesla:</span> Python powers AI models for self-driving technology.</li>
+        <li><span class="highlight2">NASA:</span> Uses Python for scientific calculations and data analysis.</li>
+        <li><span class="highlight2">Instagram:</span> Built using Python’s Django framework for scalability.</li>
+        <li><span class="highlight2">Spotify:</span> Uses Python for music recommendation algorithms.</li>
+    </ul>
+</div>
+
+
+<div class="container">
+    <body>
+
+        <h2>Introduction to Python</h2>
+        <p>Python is a high-level, interpreted programming language designed by Guido van Rossum and released in 1991. Known for its simplicity and readability, Python is widely used in web development, data science, automation, and more.</p>
+    
+        <h3>Key Features:</h3>
+        <ul>
+            <li><strong>Interpreted:</strong> Code runs line-by-line for easier debugging.</li>
+            <li><strong>Cross-Platform:</strong> Runs on Windows, macOS, and Linux.</li>
+            <li><strong>Rich Library:</strong> Includes many built-in modules for various tasks.</li>
+        </ul>
+    
+        <h3>Basic Syntax:</h3>
+        <code>
+            # Variable Declaration
+            x = 5
+            name = "Rahul"
+    
+            # If Statement with Indentation
+            if x > 0:
+                print("Positive number")
+
+            # Function Definition
+            def greet(name):
+                return f"Hello, {name}!"
+        </code>
+    
+    </body>
+
+
+</div>
+
+<div class="container">
+<body onload="brython()">
+    <div>
+        <h2>Hands-On Live Coding: Example 1 </h2>
+        <p>"Hello, Smart Python!":</p>
+        <h2>Interactive Python Notebook</h2>
+        <textarea id="code" rows="5" cols="50">print("Hello, World!")</textarea>
+        <br>
+        <button id="run">Run</button>
+        <pre id="output"></pre>
+    </div>
+
+    <script type="text/python">
+from browser import document
+
+def run_code(event):
+    code = document["code"].value
+    output = document["output"]
+    
+    try:
+        # Redirect print() output
+        result = []
+        def custom_print(*args):
+            result.append(" ".join(str(arg) for arg in args))
+        
+        exec(code, {"print": custom_print})  # Execute safely with overridden print
+
+        output.text = "\n".join(result) if result else "Code executed successfully!"
+    
+    except Exception as e:
+        output.text = f"Error: {str(e)}"
+
+document["run"].bind("click", run_code)  # Bind function to button
+    </script>
+</body>
+</div>
+
+<div class="container">
+    <p>
+
+    </p>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Rahul Kumar. All Rights Reserved.</p>
+</footer>
+
+</html>

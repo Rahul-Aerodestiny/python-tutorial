@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic python</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Basic Python</h1>
+</header>
+
+<nav>
+    <a href="../index.html">Introduction</a>
+    <a href="installation.html">Installation</a>
+    <a href="basic.html">Basic Python</a>
+    <a href="advanced.html">Advanced Python</a>
+    <a href="../about.html">About Me</a>
+    <a href="contact.html">Contact Me</a>
+</nav>
+
+<div class="container">
+    <h1>Basic Python Syntax</h1>
+
+    <h2>Your First Python Program</h2>
+    <p>Let's start with the classic "Hello, World!" program:</p>
+    <pre><code>print("Hello, World!")</code></pre>
+
+    <h3>Explanation:</h3>
+    <p>The <code>print()</code> function is used to output text or variables to the console. When you run this code, the text "Hello, World!" will be printed.</p>
+
+    <h2>Variables and Data Types</h2>
+    <p>In Python, variables are used to store data values. Below are some common data types:</p>
+    <ul>
+        <li><strong>String:</strong> A sequence of characters enclosed in quotes.</li>
+        <li><strong>Integer:</strong> A whole number.</li>
+        <li><strong>Float:</strong> A decimal number.</li>
+        <li><strong>Boolean:</strong> Represents True or False.</li>
+    </ul>
+
+    <h3>Examples:</h3>
+    <pre><code>
+name = "Alice"        # String
+age = 25              # Integer
+height = 5.9          # Float
+is_active = True      # Boolean
+    </code></pre>
+
+    <h2>Control Structures</h2>
+    <h3>If-Else Statements</h3>
+    <pre><code>
+age = 20
+if age >= 18:
+print("You are an adult.")
+else:
+print("You are a minor.")
+    </code></pre>
+    
+    <h3>For Loop</h3>
+    <pre><code>
+for i in range(5):
+print(i)
+    </code></pre>
+
+    <h3>While Loop</h3>
+    <pre><code>
+count = 0
+while count < 5:
+print(count)
+count += 1
+    </code></pre>
+
+    <h2>Functions</h2>
+    <p>Functions allow you to group code into reusable blocks. Here's how you define a function in Python:</p>
+    <pre><code>
+def greet(name):
+print(f"Hello, {name}!")
+greet("Alice")
+    </code></pre>
+
+    <h2>Lists and Dictionaries</h2>
+    <h3>Lists</h3>
+    <p>Lists are ordered collections of items. Here's an example:</p>
+    <pre><code>fruits = ["apple", "banana", "cherry"]</code></pre>
+
+    <h3>Dictionaries</h3>
+    <p>Dictionaries store key-value pairs. Here's an example:</p>
+    <pre><code>
+student = {"name": "Alice", "age": 20, "courses": ["Math", "Science"]}
+print(student["name"])  # Output: Alice
+    </code></pre>
+
+    <h2>Exceptions</h2>
+    <h3>Try-Except Block</h3>
+    <p>Use <code>try-except</code> to handle errors gracefully:</p>
+    <pre><code>
+try:
+result = 10 / 0
+except ZeroDivisionError:
+print("Cannot divide by zero!")
+    </code></pre>
+
+    <h2>Conclusion</h2>
+    <p>Now that you have a basic understanding of Python syntax, you're ready to dive deeper into Python programming!</p>
+    <p>Continue exploring more advanced topics like object-oriented programming, data manipulation, and more. Happy coding!</p>
+    
+    <p>Want to revisit the installation process? Check out our <a href="./installation.html">Python Installation & Setup</a> guide.</p>
+</div>
+
+<div class="container">
+    <body onload="brython()">
+        <h2>Embeded Python Interpreter:</h2>
+        <p> Test Your Code Here</p>
+        <textarea id="code1" rows="5" cols="124">print("Hello from Interpreter 1!")</textarea>
+        <br>
+        <button id="run1">Run</button>
+        <pre id="output1"></pre>
+    
+        <script type="text/python">
+    from browser import document
+    
+    def run_code_1(event):
+        code = document["code1"].value
+        output = document["output1"]
+    
+        try:
+            result = []
+            def custom_print(*args):
+                result.append(" ".join(str(arg) for arg in args))
+    
+            exec(code, {"print": custom_print})
+            output.text = "\n".join(result) if result else "Code executed successfully!"
+    
+        except Exception as e:
+            output.text = f"Error: {str(e)}"
+
+    
+    document["run1"].bind("click", run_code_1)
+        </script>
+    </body>
+    </div>
+
+
+<div class="container">
+    <p>
+
+    </p>
+</div>
+
+</body>
+
+<footer class="footer">
+    <p>&copy; 2025 Rahul Kumar. All Rights Reserved.</p>
+</footer>
+
+</html>
